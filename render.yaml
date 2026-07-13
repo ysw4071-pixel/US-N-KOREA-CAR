@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: us-n-korea-car
+    name: us-south-korea-car
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app

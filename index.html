@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>US-N-Korea Car Comparison</title>
+<title>US & South Korea Car Comparison</title>
 <style>
   :root {
     --bg: #0f1115;
@@ -12,7 +12,7 @@
     --text: #e8eaed;
     --muted: #9aa0ac;
     --accent-us: #4f83cc;
-    --accent-nk: #cc4f4f;
+    --accent-kr: #4fcc8f;
   }
   * { box-sizing: border-box; }
   body {
@@ -58,7 +58,7 @@
     font-size: 1.3rem;
   }
   .card.us h2 { color: var(--accent-us); }
-  .card.nk h2 { color: var(--accent-nk); }
+  .card.kr h2 { color: var(--accent-kr); }
   .card ul {
     margin: 16px 0 0;
     padding-left: 20px;
@@ -70,7 +70,7 @@
     margin: 48px 0;
   }
   .cta button {
-    background: linear-gradient(90deg, var(--accent-us), var(--accent-nk));
+    background: linear-gradient(90deg, var(--accent-us), var(--accent-kr));
     border: none;
     color: white;
     padding: 14px 28px;
@@ -78,6 +78,35 @@
     border-radius: 8px;
     cursor: pointer;
   }
+  .full-comparison {
+    display: none;
+    margin-top: 8px;
+  }
+  .full-comparison.open {
+    display: block;
+  }
+  .full-comparison table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .full-comparison th,
+  .full-comparison td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .full-comparison th {
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .full-comparison th.us { color: var(--accent-us); }
+  .full-comparison th.kr { color: var(--accent-kr); }
+  .full-comparison tr:last-child td { border-bottom: none; }
   footer {
     text-align: center;
     padding: 24px;
@@ -88,7 +117,7 @@
 </head>
 <body>
   <header>
-    <h1>US-N-Korea Car Comparison</h1>
+    <h1>US &amp; South Korea Car Comparison</h1>
     <p>Comparing the cars</p>
   </header>
 
@@ -102,23 +131,70 @@
           <li>Established dealership and service network</li>
         </ul>
       </div>
-      <div class="card nk">
-        <h2>North Korea</h2>
+      <div class="card kr">
+        <h2>South Korea</h2>
         <ul>
-          <li>Limited domestic manufacturing</li>
-          <li>Small number of state-affiliated brands</li>
-          <li>Restricted private vehicle ownership</li>
+          <li>Global auto powerhouse — Hyundai, Kia, Genesis</li>
+          <li>Major vehicle exporter with a competitive domestic market</li>
+          <li>Dense, tech-forward dealership and service network</li>
         </ul>
       </div>
     </div>
 
     <div class="cta">
-      <button type="button" onclick="alert('More detailed comparisons coming soon!')">See Full Comparison</button>
+      <button type="button" id="toggle-comparison">See Full Comparison</button>
+    </div>
+
+    <div class="full-comparison" id="full-comparison">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th class="us">United States</th>
+            <th class="kr">South Korea</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Popular brands</td>
+            <td>Ford, Chevrolet, Toyota, Honda</td>
+            <td>Hyundai, Kia, Genesis, KG Mobility</td>
+          </tr>
+          <tr>
+            <td>Typical price range</td>
+            <td>$25,000&ndash;$45,000</td>
+            <td>$18,000&ndash;$40,000</td>
+          </tr>
+          <tr>
+            <td>Private ownership</td>
+            <td>Common, financed by consumer loans</td>
+            <td>Common, high household ownership rate</td>
+          </tr>
+          <tr>
+            <td>Import access</td>
+            <td>Open market, wide import options</td>
+            <td>Open market; growing share of BMW, Benz, Tesla</td>
+          </tr>
+          <tr>
+            <td>Service &amp; parts network</td>
+            <td>Nationwide dealership network</td>
+            <td>Extensive nationwide network, strong in major cities</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <footer>
-    &copy; 2026 US-N-Korea Car Comparison
+    &copy; 2026 US &amp; South Korea Car Comparison
   </footer>
+
+  <script>
+    document.getElementById('toggle-comparison').addEventListener('click', function () {
+      var section = document.getElementById('full-comparison');
+      var open = section.classList.toggle('open');
+      this.textContent = open ? 'Hide Full Comparison' : 'See Full Comparison';
+    });
+  </script>
 </body>
 </html>
